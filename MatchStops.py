@@ -1,9 +1,9 @@
 import pandas as pd
 from Levenshtein import ratio
 
-def MatchStops():
-    dft = pd.read_csv('./Data/turnstile_191026.txt')
-    dfs = pd.read_csv('./Data/stops.txt')
+def MatchStops(turnstile_fname = './Data/turnstile_191026.txt', stops_fname = './Data/stops.txt', output_fname = 'test.csv'):
+    dft = pd.read_csv(turnstile_fname)
+    dfs = pd.read_csv(stops_fname)
     turnstile_stop_names = []
     stop_stop_names = []
     matches = []
@@ -23,6 +23,6 @@ def MatchStops():
             print('{}-->{}'.format(turn[1],best_match))
         else:
             matches.append((turn[1],best_match[1]))
-    pd.DataFrame(matches,columns=['STATION','stop_id']).to_csv('test.csv')
+    pd.DataFrame(matches,columns=['STATION','stop_id']).to_csv(output_fname)
 
 if __name__=='__main__': MatchStops()

@@ -1,3 +1,6 @@
 __pycache__/
 *.key
 EncryptKey.py
+Maps/
+*.log
+*.mp4
